@@ -1,3 +1,6 @@
+import {useState} from "react"; 
+import { nanoid } from "nanoid";
+
 import Todo from "./components/Todo";
 import Form from "./components/Form";
 import FilterButton from "./components/FilterButton";
@@ -5,7 +8,11 @@ import FilterButton from "./components/FilterButton";
 
 function App(props) {
 
-    const taskList = props.tasks?.map((task) => 
+    const [tasks, setTasks] = useState(props.tasks);
+
+    
+
+    const taskList = tasks?.map((task) => 
         <Todo
         id={task.id}
         name={task.name}
@@ -15,10 +22,12 @@ function App(props) {
     );
 
     function addTask(name) {
-        alert(name);
-      }
+        const newTask = { id: `todo-${nanoid()}`, name, completed: false };
+        setTasks([...tasks, newTask]);
+        }
       
-
+    const headingText = `${taskList.length} tasks remaining`;
+    
     return (
       <div className="todoapp stack-large">
         <h1>TodoMatic</h1>
@@ -28,7 +37,7 @@ function App(props) {
             <FilterButton />
             <FilterButton />
         </div>
-        <h2 id="list-heading">3 tasks remaining</h2>
+        <h2 id="list-heading">{headingText}</h2>
         <ul
           role="list"
           className="todo-list stack-large stack-exception"
