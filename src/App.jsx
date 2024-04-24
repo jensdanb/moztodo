@@ -7,25 +7,45 @@ import FilterButton from "./components/FilterButton";
 
 
 function App(props) {
-
+    // State
     const [tasks, setTasks] = useState(props.tasks);
-
-    
 
     const taskList = tasks?.map((task) => 
         <Todo
         id={task.id}
         name={task.name}
         completed={task.completed}
+        toggleTaskCompleted={toggleTaskCompleted}
         key={task.id}
+        deleteTask={deleteTask}
         />
     );
 
+    // Functions
     function addTask(name) {
         const newTask = { id: `todo-${nanoid()}`, name, completed: false };
         setTasks([...tasks, newTask]);
+    }
+    
+    function toggleTaskCompleted(id) {
+        function toggleIfToggled (task) {
+            if (task.id == id) {
+                return { ...task, completed: !task.completed };
+            } else return task;
         }
-      
+        const revisedTasks = tasks.map(toggleIfToggled);
+        setTasks(revisedTasks);
+    }
+
+    function deleteTask(id) {
+        console.log(id);
+
+        //const remainingTasks = tasks.filter((task) => task.id !== id);
+        //setTasks(remainingTasks);
+    }
+          
+    
+    // Visuals
     const headingText = `${taskList.length} tasks remaining`;
     
     return (
