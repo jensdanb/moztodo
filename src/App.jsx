@@ -15,8 +15,9 @@ function App(props) {
         id={task.id}
         name={task.name}
         completed={task.completed}
-        toggleTaskCompleted={toggleTaskCompleted}
         key={task.id}
+        toggleTaskCompleted={toggleTaskCompleted}
+        editTask={editTask}
         deleteTask={deleteTask}
         />
     );
@@ -29,7 +30,7 @@ function App(props) {
     
     function toggleTaskCompleted(id) {
         function toggleIfToggled (task) {
-            if (task.id == id) {
+            if (task.id === id) {
                 return { ...task, completed: !task.completed };
             } else return task;
         }
@@ -37,13 +38,21 @@ function App(props) {
         setTasks(revisedTasks);
     }
 
-    function deleteTask(id) {
-        console.log(id);
-
-        //const remainingTasks = tasks.filter((task) => task.id !== id);
-        //setTasks(remainingTasks);
+    function editTask(id, newName) {
+        function editIfEdited (task) {
+            if (task.id === id) {
+                return { ...task, name: newName };
+            } else return task;
+        }
+        const revisedTasks = tasks.map(editIfEdited);
+        setTasks(revisedTasks);
     }
-          
+
+    function deleteTask(id) {
+        const remainingTasks = tasks.filter((task) => task.id !== id);
+        setTasks(remainingTasks);
+    }
+
     
     // Visuals
     const headingText = `${taskList.length} tasks remaining`;
