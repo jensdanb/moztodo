@@ -14,7 +14,6 @@ function Form(props) {
             props.onSubmit(name);
             setName("");
         };
-        
     }
 
     return (
