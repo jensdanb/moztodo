@@ -6,9 +6,9 @@ import Form from "./components/Form";
 import FilterButton from "./components/FilterButton";
 
 
-function App(props) {
+function App({initialTasks}) {
     // State
-    const [tasks, setTasks] = useState(props.tasks);
+    const [tasks, setTasks] = useState(initialTasks);
 
     const taskList = tasks?.map((task) => 
         <Todo
