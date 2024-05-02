@@ -6,20 +6,41 @@ import Form from "./components/Form";
 import FilterButton from "./components/FilterButton";
 
 
+const FILTER_MAP = {
+    All: () => true,
+    Active: (task) => !task.completed,
+    Completed: (task) => task.completed,
+  };
+
+const FILTER_NAMES = Object.keys(FILTER_MAP);
+
 function App({initialTasks}) {
     // State
     const [tasks, setTasks] = useState(initialTasks);
 
-    const taskList = tasks?.map((task) => 
-        <Todo
-        id={task.id}
-        name={task.name}
-        completed={task.completed}
-        key={task.id}
-        toggleTaskCompleted={toggleTaskCompleted}
-        editTask={editTask}
-        deleteTask={deleteTask}
-        />
+    const [taskFilter, setTaskFilter] = useState("All");
+
+    const taskList = tasks
+        .filter(FILTER_MAP[taskFilter])
+        ?.map((task) => (
+            <Todo
+                id={task.id}
+                name={task.name}
+                completed={task.completed}
+                key={task.id}
+                toggleTaskCompleted={toggleTaskCompleted}
+                editTask={editTask}
+                deleteTask={deleteTask}
+            />)
+    );
+    
+    const filterButtons = FILTER_NAMES.map((name) => 
+        <FilterButton 
+            key={name} 
+            name={name}
+            isPressed={name === taskFilter}
+            setTaskFilter={setTaskFilter}
+            />
     );
 
     // Functions
@@ -62,9 +83,7 @@ function App({initialTasks}) {
         <h1>TodoMatic</h1>
         <Form onSubmit={addTask}/>
         <div className="filters btn-group stack-exception">
-            <FilterButton />
-            <FilterButton />
-            <FilterButton />
+            {filterButtons}
         </div>
         <h2 id="list-heading">{headingText}</h2>
         <ul
