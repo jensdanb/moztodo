@@ -14,11 +14,11 @@ const FILTER_MAP = {
 
 const FILTER_NAMES = Object.keys(FILTER_MAP);
 
-function App({initialTasks}) {
+function App({initialTasks, initialFilter}) {
     // State
     const [tasks, setTasks] = useState(initialTasks);
 
-    const [taskFilter, setTaskFilter] = useState("All");
+    const [taskFilter, setTaskFilter] = useState(initialFilter);
 
     const taskList = tasks
         .filter(FILTER_MAP[taskFilter])
@@ -76,7 +76,7 @@ function App({initialTasks}) {
 
     
     // Visuals
-    const headingText = `${taskList.length} tasks remaining`;
+    const headingText = `${tasks.filter(FILTER_MAP["Active"]).length} tasks remaining`;
     
     return (
       <div className="todoapp stack-large">
@@ -91,7 +91,6 @@ function App({initialTasks}) {
           className="todo-list stack-large stack-exception"
           aria-labelledby="list-heading">
           {taskList}
-
         </ul>
       </div>
     );

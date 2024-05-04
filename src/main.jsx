@@ -12,6 +12,9 @@ const initialTasks = [
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App initialTasks={initialTasks}/>
+    <App 
+      initialTasks={initialTasks} 
+      initialFilter={"All"}
+      />
   </React.StrictMode>,
 )
