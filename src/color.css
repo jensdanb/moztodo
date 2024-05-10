@@ -1,0 +1,22 @@
+:root{
+    color-scheme: light dark;
+}
+@media (prefers-color-scheme: light){
+    body{
+        --text-color: #1d252f;
+        --background-color: #e6e4db;
+        --primary-color: #334f5f;
+        --secondary-color: #9eadb7;
+        --accent-color: #d17f64;
+    }
+}
+
+@media (prefers-color-scheme: dark){
+    body{
+        --text-color: #d0d8e2;
+        --background-color: #242219;
+        --primary-color: #264d5e;
+        --secondary-color: #485761;
+        --accent-color: #99492e;
+    }
+}
