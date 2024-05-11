@@ -1,9 +1,8 @@
 import {useState} from "react"; 
-import { nanoid } from "nanoid";
+import {nanoid} from "nanoid";
 
-import Todo from "./components/Todo";
-import Form from "./components/Form";
-import FilterButton from "./components/FilterButton";
+import {Todo, Form, FilterButton} from "./components/TodoApp";
+import {NavBar} from "./components/Navbar";
 
 
 const FILTER_MAP = {
@@ -79,20 +78,23 @@ function App({initialTasks, initialFilter}) {
     const headingText = `${tasks.filter(FILTER_MAP["Active"]).length} tasks remaining`;
     
     return (
-      <div className="todoapp stack-large content">
-        <h1>TodoMatic</h1>
-        <Form onSubmit={addTask}/>
-        <div className="filters btn-group stack-exception">
-            {filterButtons}
+        <>
+        <NavBar/>
+        <div className="todoapp stack-large content">
+            <h1>TodoMatic</h1>
+            <Form onSubmit={addTask}/>
+            <div className="filters btn-group stack-exception">
+                {filterButtons}
+            </div>
+            <h2 id="list-heading">{headingText}</h2>
+            <ul
+            role="list"
+            className="todo-list stack-large stack-exception"
+            aria-labelledby="list-heading">
+            {taskList}
+            </ul>
         </div>
-        <h2 id="list-heading">{headingText}</h2>
-        <ul
-          role="list"
-          className="todo-list stack-large stack-exception"
-          aria-labelledby="list-heading">
-          {taskList}
-        </ul>
-      </div>
+        </>
     );
   }
   
