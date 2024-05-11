@@ -37,7 +37,7 @@ function Form(props) {
           onChange={handleTyping}
         />
 
-        <button type="submit" className="btn btn__primary btn__lg">
+        <button type="submit" className="btn btn__strong btn__lg">
           Add
         </button>
       </form>

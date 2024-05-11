@@ -4,12 +4,12 @@
 @media (prefers-color-scheme: light){
     body{
         --text-color: #1d252f;
-        --site-background-color: #e6e4db;
-        --content-background-color: #f9f8f4;
-        --primary-color: #446a7e;
+        --site-background-color: #cfe3ee;
+        --content-background-color: #e0f4ff;
+        --primary-color: #85c2ff;
         --contrast-primary: #fff;
-        --secondary-color: #9eadb7;
-        --accent-color: #d17f64;
+        --secondary-color: #38a5ff;
+        --accent-color: #ffefdb;
         --border-color: #4d4d4d;
         --danger-color: #ca3c3c;
     }

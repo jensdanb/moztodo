@@ -46,7 +46,7 @@ function EditingTodo({props, setIsEditing}) {
                     <span className="visually-hidden">renaming {props.name}</span>
                 </button>
                 
-                <button type="submit" className="btn btn__primary todo-edit">
+                <button type="submit" className="btn btn__strong">
                     Save 
                     <span className="visually-hidden">new name for {props.name}</span>
                 </button>
@@ -80,7 +80,7 @@ function ViewTodo({props, setIsEditing}) {
                 
                 <button 
                     type="button" 
-                    className="btn btn__danger" 
+                    className="btn btn__strong" 
                     onClick={() => props.deleteTask(props.id)}
                     >
                     Delete 
