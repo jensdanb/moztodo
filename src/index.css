@@ -5,7 +5,7 @@
   box-sizing: border-box;
 }
 *:focus-visible {
-  outline: 2px dashed #228bec;
+  outline: 1.4px dashed var(--primary-color);
   outline-offset: 0;
 }
 html {
@@ -49,13 +49,14 @@ textarea {
 button,
 input {
   overflow: visible;
+  background-color: var(--content-background-color);
 }
 input[type="text"] {
   border-radius: 0;
 }
 body {
-  background-color: var(--background-color);
-  color: var(--primary-color);
+  background-color: var(--site-background-color);
+  color: var(--text-color);
   font:
     1.6rem/1.25 Arial,
     sans-serif;
@@ -77,30 +78,24 @@ body {
   margin-top: 0.4rem;
 }
 .btn {
-  border: 0.2rem solid #4d4d4d;
+  border: 0.3rem solid var(--border-color);
   cursor: pointer;
   padding: 0.8rem 1rem 0.7rem;
   text-transform: capitalize;
 }
 .btn.toggle-btn {
-  border-color: #d3d3d3;
-  border-width: 1px;
-}
-.btn.toggle-btn[aria-pressed="true"] {
-  border-color: #4d4d4d;
   text-decoration: underline;
 }
 .btn__danger {
-  background-color: #ca3c3c;
-  border-color: #bd2130;
-  color: #fff;
+  background-color: var(--danger-color);
+  border-color: var(--danger-color);
+  color: var(--contrast-primary);
 }
-.btn__filter {
-  border-color: lightgrey;
-}
+
 .btn__primary {
-  background-color: #000;
-  color: #fff;
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: var(--contrast-primary);
 }
 .btn-group {
   display: flex;
@@ -150,7 +145,6 @@ body {
 /* End global styles */
 /* General app styles */
 .todoapp {
-  background: #fff;
   box-shadow:
     0 2px 4px 0 rgb(0 0 0 / 20%),
     0 2.5rem 5rem 0 rgb(0 0 0 / 10%);
@@ -186,11 +180,10 @@ body {
   text-align: center;
 }
 .input__lg {
-  border: 2px solid #000;
+  border-width: 2px;
   padding: 2rem;
 }
 .input__lg:focus-visible {
-  border-color: #4d4d4d;
   box-shadow: inset 0 0 0 2px;
 }
 [class*="__lg"] {
@@ -217,7 +210,6 @@ body {
   flex: 0 0 100%;
 }
 .todo-text {
-  border: 2px solid #565656;
   min-height: 4.4rem;
   padding: 0.4rem 0.8rem;
   width: 100%;
@@ -274,7 +266,7 @@ body {
 }
 .c-cb > input[type="checkbox"]:focus-visible + label::before {
   border-width: 4px;
-  outline: 3px dashed #228bec;
+  outline: 3px dashed var(--primary-color);
 }
 .c-cb > label::after {
   background: transparent;

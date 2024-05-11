@@ -79,7 +79,7 @@ function App({initialTasks, initialFilter}) {
     const headingText = `${tasks.filter(FILTER_MAP["Active"]).length} tasks remaining`;
     
     return (
-      <div className="todoapp stack-large">
+      <div className="todoapp stack-large content">
         <h1>TodoMatic</h1>
         <Form onSubmit={addTask}/>
         <div className="filters btn-group stack-exception">

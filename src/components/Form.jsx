@@ -32,7 +32,7 @@ function Form(props) {
           id="new-todo-input"
           className="input input__lg"
           name="text"
-          autoComplete="off"
+          autoComplete="on"
           value={name}
           onChange={handleTyping}
         />
