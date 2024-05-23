@@ -41,7 +41,7 @@ function EditingTodo({props, setIsEditing}) {
             </div>
             
             <div className="btn-group">
-                <button type="button" className="btn" onClick={() => setIsEditing(false)}>
+                <button type="button" className="btn" onMouseDown={() => setIsEditing(false)}>
                     Cancel 
                     <span className="visually-hidden">renaming {props.name}</span>
                 </button>
@@ -73,7 +73,7 @@ function ViewTodo({props, setIsEditing}) {
             </div>
             
             <div className="btn-group">
-                <button type="button" className="btn" onClick={() => setIsEditing(true)} >
+                <button type="button" className="btn" onMouseDown={() => setIsEditing(true)} >
                     Edit 
                     <span className="visually-hidden">{props.name}</span>
                 </button>
@@ -81,7 +81,7 @@ function ViewTodo({props, setIsEditing}) {
                 <button 
                     type="button" 
                     className="btn btn__strong" 
-                    onClick={() => props.deleteTask(props.id)}
+                    onMouseDown={() => props.deleteTask(props.id)}
                     >
                     Delete 
                     <span className="visually-hidden">{props.name}</span>
