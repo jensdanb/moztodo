@@ -10,7 +10,7 @@ ARG NODE_VERSION=22
 
 FROM node:${NODE_VERSION}-alpine
 
-# Use production node environment by default.
+# Uncomment to use production node environment.
 #ENV NODE_ENV production
 
 

@@ -1,8 +1,7 @@
 import {useState} from "react"; 
 import {nanoid} from "nanoid";
 
-import {Todo, Form, FilterButton} from "./components/TodoApp";
-import {NavBar} from "./components/Navbar";
+import {Todo, Form, FilterButton} from "./Components";
 
 
 const FILTER_MAP = {
@@ -13,7 +12,7 @@ const FILTER_MAP = {
 
 const FILTER_NAMES = Object.keys(FILTER_MAP);
 
-function App({initialTasks, initialFilter}) {
+function TodoApp({initialTasks, initialFilter}) {
     // State
     const [tasks, setTasks] = useState(initialTasks);
 
@@ -79,24 +78,26 @@ function App({initialTasks, initialFilter}) {
     
     return (
         <>
-        <NavBar/>
-        <div className="todoapp stack-large content">
-            <h1>TodoMatic</h1>
-            <Form onSubmit={addTask}/>
-            <div className="filters btn-group stack-exception">
-                {filterButtons}
+            <div className="todoapp stack-large content">
+                <h1>TodoMatic v1</h1>
+
+                <Form onSubmit={addTask}/>
+
+                <div className="filters btn-group stack-exception">
+                    {filterButtons}
+                </div>
+                
+                <h2 id="list-heading">{headingText}</h2>
+                <ul
+                    role="list"
+                    className="todo-list stack-large stack-exception"
+                    aria-labelledby="list-heading">
+                    {taskList}
+                </ul>
             </div>
-            <h2 id="list-heading">{headingText}</h2>
-            <ul
-            role="list"
-            className="todo-list stack-large stack-exception"
-            aria-labelledby="list-heading">
-            {taskList}
-            </ul>
-        </div>
         </>
     );
   }
   
-  export default App;
+  export default TodoApp;
   
