@@ -1,8 +1,10 @@
-import {useState} from "react"; 
+import {useState, useContext} from "react"; 
 import {nanoid} from "nanoid";
 
 import {Todo, Form, FilterButton} from "./components/TodoApp";
 import {NavBar} from "./components/Navbar";
+import { ThemeContext } from "./styling/theme";
+import './styling/index.css'
 
 
 const FILTER_MAP = {
@@ -14,23 +16,25 @@ const FILTER_MAP = {
 const FILTER_NAMES = Object.keys(FILTER_MAP);
 
 function App({initialTasks, initialFilter}) {
-    // State
-    const [tasks, setTasks] = useState(initialTasks);
+  // Context
+  const { theme } = useContext(ThemeContext);
 
-    const [taskFilter, setTaskFilter] = useState(initialFilter);
+  // State
+  const [tasks, setTasks] = useState(initialTasks);
+  const [taskFilter, setTaskFilter] = useState(initialFilter);
 
-    const taskList = tasks
-        .filter(FILTER_MAP[taskFilter])
-        ?.map((task) => (
-            <Todo
-                id={task.id}
-                name={task.name}
-                completed={task.completed}
-                key={task.id}
-                toggleTaskCompleted={toggleTaskCompleted}
-                editTask={editTask}
-                deleteTask={deleteTask}
-            />)
+  const taskList = tasks
+      .filter(FILTER_MAP[taskFilter])
+      ?.map((task) => (
+          <Todo
+              id={task.id}
+              name={task.name}
+              completed={task.completed}
+              key={task.id}
+              toggleTaskCompleted={toggleTaskCompleted}
+              editTask={editTask}
+              deleteTask={deleteTask}
+          />)
     );
     
     const filterButtons = FILTER_NAMES.map((name) => 
@@ -41,6 +45,7 @@ function App({initialTasks, initialFilter}) {
             setTaskFilter={setTaskFilter}
             />
     );
+
 
     // Functions
     function addTask(name) {
@@ -78,25 +83,25 @@ function App({initialTasks, initialFilter}) {
     const headingText = `${tasks.filter(FILTER_MAP["Active"]).length} tasks remaining`;
     
     return (
-        <>
-        <NavBar/>
-        <div className="todoapp stack-large content">
-            <h1>TodoMatic</h1>
-            <Form onSubmit={addTask}/>
-            <div className="filters btn-group stack-exception">
-                {filterButtons}
-            </div>
-            <h2 id="list-heading">{headingText}</h2>
-            <ul
-            role="list"
-            className="todo-list stack-large stack-exception"
-            aria-labelledby="list-heading">
-            {taskList}
-            </ul>
+      <div className={`App ${theme}`}>
+          <NavBar/>
+          <div className="todoapp">
+              <h1>TodoMatic</h1>
+              <Form onSubmit={addTask}/>
+              <div className="filters btn-group stack-exception">
+                  {filterButtons}
+              </div>
+              <h2 id="list-heading">{headingText}</h2>
+              <ul
+                  role="list"
+                  className="todo-list stack-large stack-exception"
+                  aria-labelledby="list-heading">
+                  {taskList}
+              </ul>
+          </div>
         </div>
-        </>
     );
   }
-  
-  export default App;
+
+export default App;
   

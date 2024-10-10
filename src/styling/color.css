@@ -1,0 +1,46 @@
+:root {
+  --primary-blue: #38a5ff;
+  --secondary-blue: hsl(240, 56%, 55%);
+
+  --text-primary-light: black;
+  --text-primary-dark: white;
+
+  --text-secondary-light: rgb(70, 70, 70);
+  --text-secondary-dark: rgb(160, 160, 160);
+
+  --bg-primary-light: white;
+  --bg-primary-dark: hsl(0, 0%, 11%);
+
+  --bg-secondary-light: rgb(212, 212, 212);
+  --bg-secondary-dark: hsl(0, 0%, 21%);
+
+  --bg-navbar-light: hsl(240, 100%, 70%);
+  --bg-navbar-dark: rgb(29, 33, 85);
+
+  --danger-light: hsl(350, 42%, 52%);
+  --danger-dark: hwb(350 31% 9%);
+}
+
+.light-theme {
+  --text-primary: var(--text-primary-light);
+  --text-secondary: var(--text-secondary-light);
+  --bg-primary: var(--bg-primary-light);
+  --bg-secondary: var(--bg-secondary-light);
+  --bg-navbar: var(--bg-navbar-light);
+  --danger: var(--danger-light);
+}
+
+.dark-theme {
+  --text-primary: var(--text-primary-dark);
+  --text-secondary: var(--text-secondary-dark);
+  --bg-primary: var(--bg-primary-dark);
+  --bg-secondary: var(--bg-secondary-dark);
+  --bg-navbar: var(--bg-navbar-dark);
+  --danger: var(--danger-light);
+}
+
+.App {
+  min-height: 100vh;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+}
