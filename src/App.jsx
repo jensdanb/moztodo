@@ -1,6 +1,7 @@
-import {useState, useContext} from "react"; 
+import {useState, useContext, useEffect} from "react"; 
 import {nanoid} from "nanoid";
 
+import { SetByServer } from "./network";
 import {Todo, Form, FilterButton} from "./components/TodoApp";
 import {NavBar} from "./components/Navbar";
 import { ThemeContext } from "./styling/theme";
@@ -18,6 +19,10 @@ const FILTER_NAMES = Object.keys(FILTER_MAP);
 function App({initialTasks, initialFilter}) {
   // Context
   const { theme } = useContext(ThemeContext);
+
+  // Network refresh
+  const [serverStatusMessage, setserverStatusMessage] = useState('not connected');
+  SetByServer('hello', setserverStatusMessage)
 
   // State
   const [tasks, setTasks] = useState(initialTasks);
@@ -86,7 +91,7 @@ function App({initialTasks, initialFilter}) {
       <div className={`App ${theme}`}>
           <NavBar/>
           <div className="todoapp">
-              <h1>TodoMatic</h1>
+              <h1>Server {serverStatusMessage}</h1>
               <Form onSubmit={addTask}/>
               <div className="filters btn-group stack-exception">
                   {filterButtons}

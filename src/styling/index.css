@@ -1,11 +1,12 @@
 @import "./color.css";
+@import "./geometry.css";
 
 .btn {
   background-color: var(--bg-primary);
   cursor: pointer;
-  padding: 0.8rem 1rem 0.7rem;
+  padding: var(--def-btn-padding);
   text-transform: capitalize;
-  border-radius: 0.3em;
+  border-radius: var(--def-fillet);
 }
 .btn:hover {
   text-decoration: underline;
@@ -35,7 +36,7 @@
 .btn-group-spread {
   margin-left: auto;
   margin-right: auto;
-  max-width: 50rem;
+  max-width: var(--def-max-width);
   padding: auto;
   display: flex;
   justify-content: space-evenly;
@@ -44,19 +45,29 @@
 input,
 optgroup,
 select,
+
 textarea {
   font-family: inherit;
   font-size: 100%;
   line-height: 1.15;
   margin: 0;
 }
-button,
-input {
-  overflow: visible;
-  background-color: var(--content-background-color);
-}
+
 input[type="text"] {
-  border-radius: 0.3em;
+  border-radius: var(--def-fillet);
+}
+
+.input__lg {
+  border-width: 2px;
+  padding: var(--def-form-padding);
+}
+.input__lg:focus-visible {
+  box-shadow: inset 0 0 0 1px;
+}
+
+.label-wrapper {
+  flex: 0 0 100%;
+  margin: 0;
 }
 
 .navbar {
@@ -96,11 +107,12 @@ input[type="text"] {
 .todoapp > * {
   margin-left: auto;
   margin-right: auto;
-  max-width: 50rem;
+  max-width: var(--def-max-width);
 }
 .todoapp > form {
-  max-width: 100%;
+  margin-bottom: 1rem;
 }
+
 .todoapp > h1 {
   display: block;
   margin: 0;
